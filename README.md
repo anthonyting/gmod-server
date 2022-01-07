@@ -24,7 +24,7 @@ Copy server.cfg with preferred settings (including password)
 Copy autoexec.cfg with preferred settings (including gamemode)
 
 Start server with (located in the `force_install_dir` path, so `~/.steam/steamcmd/steam_install_dir`):
-`./srcds_run +host_workshop_collection <workshop_collection_id> -authkey <auth_key> -console -game garrysmod +map 5cplazaNov14 +max_players 50`
+`./srcds_run +host_workshop_collection <workshop_collection_id> -authkey <auth_key> -console -game garrysmod +map ttt_whitehouse_v9 -max_players 50`
 
 Run on the server:
 `ulx adduser <steam_account_name> superadmin`
