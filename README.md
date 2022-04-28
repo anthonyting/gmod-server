@@ -1,5 +1,14 @@
 # Setup Details
 
+## Packages Maybe Needed
+
+```bash
+sudo apt install mailutils util-linux tmux lib32gcc1 libstdc++6 \
+libstdc++6:i386 libcurl4-gnutls-dev:i386 lib32z1 lib32ncurses5 \
+lib32bz2-1.0 lib32gcc1 lib32stdc++6 lib32gcc1 libstdc++6 libstdc++6:i386 \
+libcurl4-gnutls-dev:i386
+```
+
 ## SteamCMD
 
 `sudo apt install steamcmd`
