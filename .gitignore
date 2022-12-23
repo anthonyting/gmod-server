@@ -1,15 +1,18 @@
-# all subdirectories
-/*
+# all files and subdirectories
+*
+!*/
 
 # except these
-!cfg
-!lua/autorun/server
-!server-scripts
+!cfg/*
+!data/ulx/adverts.txt
+!data/ulx/config.txt
+!lua/autorun/server/*
+!server-scripts/*
 
 # files that exist in the base dir
 *.vpk
 *.vbsp
-*.txt
+./*.txt
 *.cache
 *.inf
 *.db
