@@ -32,8 +32,17 @@ Then, uncomment the game in cfg/mount.cfg with the path to the folder of those g
 Copy server.cfg with preferred settings (including password)
 Copy autoexec.cfg with preferred settings (including gamemode)
 
-Start server with (located in the `force_install_dir` path, so `~/.steam/steamcmd/steam_install_dir`):
-`./srcds_run +host_workshop_collection <workshop_collection_id> -authkey <auth_key> -console -game garrysmod +map ttt_whitehouse_v9 -max_players 50`
+Start server with `server-scripts/start.sh`
+
+```bash
+#!/bin/bash
+set -euo pipefail
+
+WORKSHOP_COLLECTION_ID=
+MAP=
+
+~/.steam/steamcmd/steam_install_dir/garrysmod/server-scripts/start.sh $WORKSHOP_COLLECTION_ID $MAP
+```
 
 Run on the server:
 `ulx adduser <steam_account_name> superadmin`

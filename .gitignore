@@ -1,5 +1,16 @@
-*
-!.gitignore
-!README.md
+# all subdirectories
+/*
+
+# except these
 !cfg
-!lua/autorun
+!lua/autorun/server
+!server-scripts
+
+# files that exist in the base dir
+*.vpk
+*.vbsp
+*.txt
+*.cache
+*.inf
+*.db
+*.rad
