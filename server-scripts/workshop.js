@@ -1,5 +1,5 @@
 let ignoreMatch = new Set(["ulx", "ulib", "server", "mapvote"]);
-let ignoreEqual = new Set(["Murder"]);
+let ignoreEqual = new Set([]);
 
 await navigator.clipboard.writeText(
   Array.from(document.querySelectorAll(".workshopItemTitle"))
