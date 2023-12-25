@@ -1,0 +1,9 @@
+@ShutdownOnFailedCommand 1
+@NoPromptForPassword 1
+
+force_install_dir ./steam_install_dir
+login anonymous
+app_update 4020 validate // garrysmod game
+app_update 232330 validate // cs source assets
+app_update 4020 validate // required for garrysmod to mount cs source assets
+quit

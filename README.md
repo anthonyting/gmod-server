@@ -2,60 +2,72 @@
 
 ## SteamCMD
 
-### Packages probably needed
+### Packages
+
+0. Prereqs
+
+- https://developer.valvesoftware.com/wiki/SteamCMD#Debian-Based_Distributions_.28Ubuntu.2C_Mint.2C_etc..29
+
+1. Install packages
 
 ```bash
+sudo add-apt-repository multivers
 sudo dpkg --add-architecture i386
 sudo apt update
-sudo apt install mailutils util-linux tmux lib32gcc1 libstdc++6 \
-libstdc++6:i386 libcurl4-gnutls-dev:i386 \
-lib32gcc1 lib32gcc1 libstdc++6 libstdc++6:i386 \
-libcurl4-gnutls-dev:i386 libbz2-1.0:i386 libcurl4 \
+sudo apt install steamcmd
 ```
 
-`sudo apt install steamcmd`
+2. Start `steamcmd` to verify it works
 
-Then, run `steamcmd`
-
-Games are installed in `~/.steam/steamcmd/steam_install_dir` using `force_install_dir ./steam_install_dir`
-
-Then, `login anonymous`
+```bash
+steamcmd
+quit
+```
 
 ## Garry's Mod
 
-For GMOD, install gmod with `app_update 4020 validate`
-
-For CSS, install CSS dedicated server with `app_update 232330 validate`
-
-IMPORTANT: reinstall GMOD with `app_update 4020 validate`
-
-Start server with `server-scripts/start.sh`
+1. Install gmod and cs source
 
 ```bash
-#!/bin/bash
-set -euo pipefail
-
-WORKSHOP_COLLECTION_ID=
-MAP=
-
-~/.steam/steamcmd/steam_install_dir/garrysmod/server-scripts/start.sh $WORKSHOP_COLLECTION_ID $MAP
+steamcmd +runscript /home/$USER/.local/share/Steam/steamcmd/steam_install_dir/garrysmod/server-scripts/update-gmod-ds.txt
 ```
 
-Run on the server:
-`ulx adduser <steam_account_name> superadmin`
+> Note: Games should be installed in `~/.local/share/Steam/steamcmd/steam_install_dir`. If they are not, find it with `cd ~ && find -name garrysmod`
+
+2. Install packages needed to run the server
+
+```bash
+sudo apt update
+sudo apt install libncurses5:i386 tmux
+```
+
+3. Start server in tmux
+
+```bash
+tmux new-session -s gmod-server
+```
+
+> Note: quit server with `quit`
+
+4. Give admin to a user
+
+```bash
+ulx adduser <steam_account_name> superadmin
+```
 
 ## Updating List of Workshop Items
 
 1. Navigate to the workshop collection link
-2. Run `server-scripts/workshop.js` to copy workshop ids, then update workshop.lua
+2. Run `server-scripts/workshop.js` to copy workshop ids, then update `lua/autorun/server/workshop.lua`
 
 ## Dynamic DNS
 
 Enable dynamic dns in DNS configuration and get the dynamic dns password. Then:
 
-`sudo apt install ddclient`
-
-`sudo vim /etc/ddclient.conf`
+```bash
+sudo apt install ddclient
+sudo vim /etc/ddclient.conf
+```
 
 ```ini
 protocol=namecheap
@@ -64,4 +76,41 @@ server=dynamicdns.park-your-domain.com
 login=<domain_name.ca>
 password='<insert_dynamic_dns_password>'
 gmod
+```
+
+## In WSL
+
+1. Enable Hyper-V optional features and restart computer
+2. Go to Hyper-V Manager and create an external network switch in Action -> Virtual Switch Manager
+  - Use your computer's network switch
+3. Edit `~/.wslconfig` on Windows machine
+
+```ini
+[wsl2]
+memory=24GB  
+processors=12
+networkingMode=bridged
+vmSwitch=<name of bridge you created>
+```
+
+> Note: maybe need to add dhcp false?
+
+3. Restart wsl
+
+```
+wsl --shutdown
+wsl
+```
+
+4. Assign a new IP address
+
+```bash
+sudo ip addr flush eth0
+sudo dhclient eth0
+```
+
+5. Verify IP address for eth0 is correct for the subnet
+
+```bash
+ip -a
 ```

@@ -5,7 +5,7 @@ set -euo pipefail
 WORKSHOP_COLLECTION_ID=$1
 MAP=$2
 
-cd ~/.steam/steamcmd/steam_install_dir
+cd ~/.local/share/Steam/steamcmd/steam_install_dir
 
 cd garrysmod
 git pull

@@ -1,4 +1,4 @@
-let ignore = new Set(["ulx", "ulib", "server"]);
+let ignore = new Set(["ulx", "ulib", "server", "mapvote"]);
 
 await navigator.clipboard.writeText(
   Array.from(document.querySelectorAll(".workshopItemTitle"))
