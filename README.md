@@ -49,7 +49,7 @@ tmux new-session -s gmod-server
 
 > Note: quit server with `quit`
 
-4. Give admin to a user
+4. Give admin to a user after they are connected
 
 ```bash
 ulx adduser <steam_account_name> superadmin
