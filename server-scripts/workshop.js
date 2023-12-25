@@ -1,13 +1,25 @@
-let ignore = new Set(["ulx", "ulib", "server", "mapvote"]);
+let ignoreMatch = new Set(["ulx", "ulib", "server", "mapvote"]);
+let ignoreEqual = new Set(["Murder"]);
 
 await navigator.clipboard.writeText(
   Array.from(document.querySelectorAll(".workshopItemTitle"))
-    .map((i) => {
-      const url = i.parentNode.href;
-      if (url && !ignore.has(i.textContent.toLowerCase())) {
-        return new URLSearchParams(new URL(url).search).get("id");
+    .map((itemTitleElement) => {
+      const url = itemTitleElement.parentNode.href;
+      if (!url) {
+        return null;
       }
-      return null;
+
+      for (const item of ignoreMatch) {
+        if (itemTitleElement.textContent.toLowerCase().includes(item)) {
+          return null;
+        }
+      }
+      for (const item of ignoreEqual) {
+        if (itemTitleElement.textContent === item) {
+          return null;
+        }
+      }
+      return new URLSearchParams(new URL(url).search).get("id");;
     })
     .filter((i) => i)
     .map((j) => `resource.AddWorkshop(${j})`)
