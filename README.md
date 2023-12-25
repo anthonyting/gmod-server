@@ -60,6 +60,15 @@ ulx adduser <steam_account_name> superadmin
 1. Navigate to the workshop collection link
 2. Run `server-scripts/workshop.js` to copy workshop ids, then update `lua/autorun/server/workshop.lua`
 
+## Nginx
+
+```bash
+sudo apt install nginx
+sudo cp server-scripts/gmod.conf /etc/nginx/sites-available/gmod.conf
+sudo ln -s /etc/nginx/sites-available/gmod.conf /etc/nginx/sites-enabled/gmod.conf
+sudo systemctl reload nginx
+```
+
 ## Dynamic DNS
 
 Enable dynamic dns in DNS configuration and get the dynamic dns password. Then:
