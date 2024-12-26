@@ -17,3 +17,6 @@
 *.inf
 *.db
 *.rad
+
+!docker-compose.yml
+!Dockerfile

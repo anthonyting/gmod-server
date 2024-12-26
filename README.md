@@ -1,8 +1,18 @@
 # Setup Details
 
-## SteamCMD
+## Easy mode (docker in WSL2)
 
-### Packages
+0. Install [docker desktop](https://docs.docker.com/desktop/setup/install/windows-install/)
+
+1. Run `docker-compose up --build`
+
+2. Make sure your 27015 and 27005 ports are forwarded for TCP and UDP
+
+3. Connect to the WSL 2 VM IP address
+
+## Hard mode (manual)
+
+#### Packages
 
 0. Prereqs
 

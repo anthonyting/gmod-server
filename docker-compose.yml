@@ -1,0 +1,12 @@
+services:
+  server:
+    ports:
+      - "27015:27015/tcp"
+      - "27015:27015/udp"
+      - "27005:27005/tcp"
+      - "27005:27005/udp"
+    build: .
+    stdin_open: true
+    tty: true
+    env_file:
+      - ".env"
